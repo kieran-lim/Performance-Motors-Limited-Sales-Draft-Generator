@@ -2,6 +2,8 @@
 
 A professional web application designed to streamline the car sales process by generating polished, accurate, and ready-to-send sales drafts with automated calculations and professional formatting.
 
+It is common practice for salespeople in the car sales industry in Singapore to scribble the price breakdown, trade-in offer and financing details on paper, opening the door to ambiguity and confusion for customers, especially when many numbers and components are involved. Introducing this sales draft generator for sales teams to use prevents unnecessary confusion, calculation mistakes, saves time, and projects professionalism by the company.
+
 ## 🌟 Features
 
 - **Real-time Calculations**: Dynamic updates for net price, downpayment, trade-in balance, and finance details
