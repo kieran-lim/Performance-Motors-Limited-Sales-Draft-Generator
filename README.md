@@ -96,24 +96,8 @@ sales-draft-generator/
 - Protected routes and resources
 - Database connection pooling
 
-## 📈 Future Enhancements
-
-- Advanced financial calculators
-- Enhanced error handling and user feedback
-- Additional customization options
-- Integration with CRM systems
-- Mobile application development
-
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📝 License
-
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-## 📞 Support
-
-For support, please open an issue in the GitHub repository or contact the development team.
 
 
