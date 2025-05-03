@@ -1,0 +1,39 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+
+# venv
+venv/
+.venv/
+
+# env vars
+.env
+
+# database
+*.db
+
+# Flask instance folder
+instance/
+
+# --- Node.js ---
+node_modules/
+npm-debug.log*
+yarn-error.log*
+
+# build output
+dist/
+build/
+
+# --- Editor / OS ---
+.vscode/
+.idea/
+*.sublime-*
+*.swp
+.DS_Store
+Thumbs.db
+
+# --- Logs / coverage ---
+*.log
+htmlcov/
+coverage.xml

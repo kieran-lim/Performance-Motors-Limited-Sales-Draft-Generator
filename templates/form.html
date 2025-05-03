@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Create Sales Draft</title>
+  <!-- POPPINS FROM GOOGLE FONTS -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="./../static/css/output.css" rel="stylesheet" />
+  <style>
+    body { font-family: 'Poppins', sans-serif; }
+  </style>
+</head>
+<body class="bg-[#2E2E2E] min-h-screen flex flex-col items-center p-4">
+
+
+
+  <!-- MAIN CARD WITH INTERNAL HEADER -->
+  <div class="bg-gray-800 bg-opacity-80 backdrop-blur-md rounded-2xl p-6 max-w-2xl w-full mx-auto text-white shadow-lg">
+    <!-- CARD HEADER -->
+    <div class="flex items-center justify-between mb-4 border-b border-gray-600 pb-2">
+      <div class="text-2xl md:text-3xl font-semibold text-[#39FF14]">Create Sales Draft</div>
+      <a href="/logout"
+         class="px-3 py-1 bg-[#ff4444] text-white rounded-md shadow-lg hover:bg-[#cc0000] hover:shadow-[0_0_10px_2px_rgba(255,0,0,0.7)] transition-all duration-300">
+        Logout
+      </a>
+    </div>
+    
+
+
+    <!-- FORM CONTENT -->
+    <form id="sales-form" method="POST" action="{{ url_for('form') }}" class="grid grid-cols-1 md:grid-cols-2 gap-x-6 gap-y-8">
+      <!-- CUSTOMER & MODEL -->
+      <div>
+        <label for="customer_name" class="block mb-1">Customer Name</label>
+        <input type="text" id="customer_name" name="customer_name" placeholder="Kieran Lim"
+          class="w-full px-3 py-2 bg-gray-700 rounded-md focus:outline-none focus-glow placeholder-gray-400 text-white" required />
+      </div>
+      <div>
+        <label for="customer_contact" class="block mb-1">Customer Contact</label>
+        <input type="text" id="customer_contact" name="customer_contact" placeholder="+65 1234 5678"
+          class="w-full px-3 py-2 bg-gray-700 rounded-md focus:outline-none focus-glow placeholder-gray-400 text-white" required />
+      </div>
+      <div>
+        <label for="model" class="block mb-1">Model</label>
+        <input type="text" id="model" name="model" placeholder="Car Model"
+          class="w-full px-3 py-2 bg-gray-700 rounded-md focus:outline-none focus-glow placeholder-gray-400 text-white" required />
+      </div>
+
+
+
+      <!-- PRICES, DISCOUNT & ADD-ONS -->
+      <div class="md:col-span-2 grid grid-cols-3 gap-x-4 gap-y-8">
+        <div class="mb-4">
+          <label for="retail_price" class="block mb-1">RRP ($)</label>
+          <input type="number" id="retail_price" name="retail_price" placeholder="0"
+            class="w-full px-3 py-2 bg-gray-700 rounded-md focus:outline-none focus-glow placeholder-gray-400 text-white" required />
+        </div>
+        <div class="mb-4">
+          <label for="discount" class="block mb-1">Discount ($)</label>
+          <input type="number" id="discount" name="discount" placeholder="0"
+            class="w-full px-3 py-2 bg-gray-700 rounded-md focus:outline-none focus-glow placeholder-gray-400 text-white" />
+        </div>
+        <div class="mb-4">
+          <label for="addons" class="block mb-1">Add-Ons ($)</label>
+          <input type="number" id="addons" name="addons" placeholder="0"
+            class="w-full px-3 py-2 bg-gray-700 rounded-md focus:outline-none focus-glow placeholder-gray-400 text-white" />
+        </div>
+      </div>
+
+
+
+      <!-- NET PRICE & DOWNPAYMENT -->
+      <div>
+        <label for="net_price" class="block mb-1 text-[#39FF14]">Net Price</label>
+        <input type="text" id="net_price" name="net_price" placeholder="0"
+          class="w-full px-3 py-2 bg-gray-700 rounded-md focus:outline-none focus-glow placeholder-gray-400 text-white" />
+      </div>
+      <div>
+        <label for="downpayment" class="block mb-1 text-[#39FF14]">Downpayment</label>
+        <input type="text" id="downpayment" placeholder="$0.00"
+          class="w-full px-3 py-2 bg-gray-700 rounded-md focus:outline-none placeholder-gray-400 text-white pointer-events-none cursor-not-allowed" readonly />
+      </div>
+
+
+
+      <!-- PACKAGE OPTIONS AS CHECKBOXES -->
+      <div class="md:col-span-2 mt-8 mb-8">
+        <label class="block mb-1">Package Options (select all that apply)</label>
+        <div class="grid grid-cols-2 gap-x-4 gap-y-2 max-h-52 overflow-y-auto p-2 bg-gray-700 rounded-md">
+          <label class="inline-flex items-center">
+            <input type="checkbox" name="packages" value="1 year road tax" class="accent-[#39FF14]"/>
+            <span class="ml-2">1 yr road tax</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input type="checkbox" name="packages" value="5 years/200,000km warranty" class="accent-[#39FF14]"/>
+            <span class="ml-2">5 yrs/200K km WTY</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input type="checkbox" name="packages" value="5 years/100,000km service" class="accent-[#39FF14]"/>
+            <span class="ml-2">5 yrs/100K km service</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input type="checkbox" name="packages" value="5 years/100,000km service+" class="accent-[#39FF14]"/>
+            <span class="ml-2">5 yrs/100K km service+</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input type="checkbox" name="packages" value="6 years/unlimited mileage service" class="accent-[#39FF14]"/>
+            <span class="ml-2">6 yrs/unltd mileage service</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input type="checkbox" name="packages" value="8 years/160,000km EV battery warranty" class="accent-[#39FF14]"/>
+            <span class="ml-2">8 yrs/160K km EV batt WTY</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input type="checkbox" name="packages" value="No wall box or charging credits" class="accent-[#39FF14]"/>
+            <span class="ml-2">No wall box or CHG cr</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input type="checkbox" name="packages" value="3 years/200,000km warranty" class="accent-[#39FF14]"/>
+            <span class="ml-2">3 years/200K km WTY</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input type="checkbox" name="packages" value="All weather mats" class="accent-[#39FF14]"/>
+            <span class="ml-2">All weather mats</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input type="checkbox" name="packages" value="BMW dashcam" class="accent-[#39FF14]"/>
+            <span class="ml-2">BMW dashcam</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input type="checkbox" name="packages" value="3M solar film premium" class="accent-[#39FF14]"/>
+            <span class="ml-2">3M solar film premium</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input type="checkbox" name="packages" value="3M solar film crystalline dark" class="accent-[#39FF14]"/>
+            <span class="ml-2">3M solar film cryst dark</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input type="checkbox" name="packages" value="$1,000 Takashimaya voucher" class="accent-[#39FF14]"/>
+            <span class="ml-2">$1,000 Taka voucher</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input type="checkbox" name="packages" value="BMW loyalty programme" class="accent-[#39FF14]"/>
+            <span class="ml-2">BMW loyalty programme</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input type="checkbox" name="packages" value="Anti-glare" class="accent-[#39FF14]"/>
+            <span class="ml-2">Anti-glare</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input type="checkbox" name="packages" value="Number retention" id="number-retention" class="accent-[#39FF14]"/>
+            <span class="ml-2">Number retention</span>
+          </label>
+        </div>
+      </div>
+
+
+
+      <!-- TRADE-IN & FINANCE -->
+      <div class="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-x-6 mt-8">
+        <div>
+          <label class="inline-flex items-center">
+            <input type="checkbox" id="tradein-checkbox" name="tradein-checkbox" class="mr-2 accent-[#39FF14]" />
+            <span>Include Trade-In</span>
+          </label>
+          <div id="tradein-fields" class="hidden grid grid-cols-1 gap-y-4 mt-4">
+            <div>
+              <label for="tradein_plate" class="block mb-1">Car Plate Number</label>
+              <input type="text" id="tradein_plate" name="tradein_plate" placeholder="SXX1234X"
+                class="w-full px-3 py-2 bg-gray-700 rounded-md focus:outline-none focus-glow placeholder-gray-400 text-white" data-tradein-required />
+            </div>
+            <div>
+              <label for="tradein_price" class="block mb-1">Trade-In Price ($)</label>
+              <input type="number" id="tradein_price" name="tradein_price" placeholder="0" min="1"
+                class="w-full px-3 py-2 bg-gray-700 rounded-md focus:outline-none focus-glow placeholder-gray-400 text-white" data-tradein-required />
+            </div>
+            <div>
+              <label for="tradein_outstanding" class="block mb-1">Outstanding Loan ($)</label>
+              <input type="number" id="tradein_outstanding" name="tradein_outstanding" placeholder="0" min="0"
+                class="w-full px-3 py-2 bg-gray-700 rounded-md focus:outline-none focus-glow placeholder-gray-400 text-white" data-tradein-required />
+            </div>
+            <div>
+              <label for="tradein_balance" class="block mb-1 text-[#39FF14]">Trade-In Balance</label>
+              <input type="text" id="tradein_balance" name="tradein_balance" placeholder="$0.00"
+                class="w-full px-3 py-2 bg-gray-700 rounded-md focus:outline-none placeholder-gray-400 text-white pointer-events-none cursor-not-allowed" readonly />
+            </div>
+          </div>
+        </div>
+        <div>
+          <label class="inline-flex items-center">
+            <input type="checkbox" id="finance-checkbox" name="finance-checkbox" class="mr-2 accent-[#39FF14]" />
+            <span>Include Finance</span>
+          </label>
+          <div id="finance-fields" class="hidden grid grid-cols-1 gap-y-4 mt-4">
+            <div>
+              <label for="finance_bank" class="block mb-1">Bank</label>
+              <input type="text" id="finance_bank" name="finance_bank" placeholder="Bank Name"
+                class="w-full px-3 py-2 bg-gray-700 rounded-md focus:outline-none focus-glow placeholder-gray-400 text-white" data-finance-required />
+            </div>
+            <div>
+              <label for="finance_loan" class="block mb-1">Loan Amount ($)</label>
+              <input type="number" id="finance_loan" name="finance_loan" placeholder="0" min="0"
+                class="w-full px-3 py-2 bg-gray-700 rounded-md focus:outline-none focus-glow placeholder-gray-400 text-white" data-finance-required />
+            </div>
+            <div>
+              <label for="finance_tenure" class="block mb-1">Tenure (months)</label>
+              <input type="number" id="finance_tenure" name="finance_tenure" placeholder="0" min="1"
+                class="w-full px-3 py-2 bg-gray-700 rounded-md focus:outline-none focus-glow placeholder-gray-400 text-white" data-finance-required />
+            </div>
+            <div>
+              <label for="finance_rate" class="block mb-1">Interest Rate (%)</label>
+              <input type="number" step="0.01" id="finance_rate" name="finance_rate" placeholder="0.00" min="0.01"
+                class="w-full px-3 py-2 bg-gray-700 rounded-md focus:outline-none focus-glow placeholder-gray-400 text-white" data-finance-required />
+            </div>
+            <div>
+              <label for="finance_monthly" class="block mb-1 text-[#39FF14]">Monthly Installment (simple interest)</label>
+              <input type="text" id="finance_monthly" name="finance_monthly" placeholder="$0"
+                class="w-full px-3 py-2 bg-gray-700 rounded-md focus:outline-none placeholder-gray-400 text-white pointer-events-none cursor-not-allowed" readonly />
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <!-- SUBMIT -->
+      <div class="md:col-span-2 mt-8">
+        <button type="submit"
+          class="w-full py-2 bg-[#39FF14] rounded-md text-gray-900 font-semibold hover:bg-opacity-80 hover:scale-105 transition-transform ripple">
+          Create Draft
+        </button>
+      </div>
+    </form>
+  </div>
+
+
+
+  <script src="./../static/js/form.js"></script>
+</body>
+</html>
+

@@ -1,0 +1,85 @@
+<!-- TEMPLATE WAS TAKEN FROM TAILWINDCSS DOCS -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PML Sales Draft Generator</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="./../static/css/output.css" rel="stylesheet" />
+  <style>
+    /* full-width reset + Poppins */
+    html, body { margin: 0; padding: 0; width: 100%; height: 100%; }
+    body { font-family: 'Poppins', sans-serif; }
+  </style>
+</head>
+<body class="bg-[#2E2E2E] min-h-screen overflow-hidden relative">
+
+
+
+  <!-- TRANSPARENT HEADER -->
+  <header class="absolute inset-x-0 top-0 z-50 bg-transparent">
+    <nav class="flex items-center justify-between p-6 lg:px-8">
+      <div class="flex lg:flex-1">
+        <a href="#" class="-m-1.5 p-1.5">
+          <span class="sr-only">Your Company</span>
+          <img class="h-8 w-auto" src="./../static/images/bmw-logo.png" alt="Your Company Logo">
+        </a>
+      </div>
+      <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+        <a href="{{ url_for('form') }}" class="text-sm font-semibold text-[#39FF14] ripple">
+          Log in <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+    </nav>
+  </header>
+
+
+
+  <!-- MAIN CONTENT  -->
+  <main class="relative isolate w-full h-full px-6 pt-14 lg:px-8">
+    <div class="mx-auto max-w-2xl py-32 sm:py-48 lg:py-56 text-center">
+      <h1 class="text-5xl font-semibold tracking-tight text-white sm:text-7xl">
+        PML Sales Draft <span class="text-[#39FF14] relative transition-all duration-1000 animate-pulse opacity-90 drop-shadow-[0_0_8px_#39FF14] after:absolute after:inset-0 after:-z-10 after:blur-[2px] after:bg-[#39FF14]/20 after:rounded-lg">Generator</span>
+      </h1>
+      <p class="mt-8 text-lg font-medium text-gray-400 sm:text-xl/8" style="transition-delay: 200ms;">
+        Generate polished, accurate, and ready-to-send sales drafts with automated calculations, breakdowns, and professional formatting in seconds.
+      </p>
+      <div class="mt-10 flex items-center justify-center gap-x-6" style="transition-delay: 400ms;">
+        <a href="{{ url_for('form') }}" class="rounded-md bg-[#39FF14] px-3.5 py-2.5 text-sm font-semibold text-gray-900 shadow-md hover:bg-opacity-80 hover:scale-105 transition-transform ripple">
+          Get started
+        </a>
+        <a href="https://api.whatsapp.com/send?phone=6588775241&text=Message%20Kieran%20if%20you're%20experiencing%20issues%20with%20the%20web%20application%20or%20if%20you%20would%20like%20to%20provide%20feedback%20for%20improvements%20:)" class="text-sm font-semibold text-[#39FF14] ripple">
+          Experiencing Issues? <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </div>
+
+
+
+    <!-- FULL WIDTH NEON-GREEN PARALLAX BLOBS -->
+    <div class="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
+         data-parallax data-depth="0.3" aria-hidden="true">
+      <div class="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg]
+                  bg-gradient-to-tr from-[#39FF14] to-[#7CFF4F] opacity-30
+                  sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
+           style="clip-path: polygon(74.1% 44.1%,100% 61.6%,97.5% 26.9%,85.5% 0.1%,80.7% 2%,72.5% 32.5%,60.2% 62.4%,52.4% 68.1%,47.5% 58.3%,45.2% 34.5%,27.5% 76.7%,0.1% 64.9%,17.9% 100%,27.6% 76.8%,76.1% 97.7%,74.1% 44.1%);">
+      </div>
+    </div>
+    <div class="absolute inset-x-0 top-[calc(100%-13rem)] -z-10 transform-gpu overflow-hidden blur-3xl sm:top-[calc(100%-30rem)]"
+         data-parallax data-depth="0.5" aria-hidden="true">
+      <div class="relative left-[calc(50%+3rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2
+                  bg-gradient-to-tr from-[#39FF14] to-[#7CFF4F] opacity-30
+                  sm:left-[calc(50%+36rem)] sm:w-[72.1875rem]"
+           style="clip-path: polygon(74.1% 44.1%,100% 61.6%,97.5% 26.9%,85.5% 0.1%,80.7% 2%,72.5% 32.5%,60.2% 62.4%,52.4% 68.1%,47.5% 58.3%,45.2% 34.5%,27.5% 76.7%,0.1% 64.9%,17.9% 100%,27.6% 76.8%,76.1% 97.7%,74.1% 44.1%);">
+      </div>
+    </div>
+  </main>
+
+
+
+  <script src="./../static/js/index.js"></script>
+  <script src="./../static/js/auth.js"></script>
+</body>
+</html>
