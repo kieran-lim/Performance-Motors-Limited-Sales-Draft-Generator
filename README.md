@@ -98,8 +98,3 @@ sales-draft-generator/
 - Protected routes and resources
 - Database connection pooling
 
-## 🤝 Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-
