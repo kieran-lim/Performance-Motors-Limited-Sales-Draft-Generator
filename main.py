@@ -221,7 +221,15 @@ def form():
             net_price = retail_price - discount + addons
             # special case for packages -> grab all checked packages
             packages = form.getlist('packages')
-            package_str = "||".join(packages)  # Use || as delimiter instead of comma
+            
+            # handle custom packages
+            custom_packages = form.getlist('custom_packages[]')
+            # filter out empty custom packages
+            custom_packages = [pkg.strip() for pkg in custom_packages if pkg.strip()]
+            
+            # combine regular packages and custom packages
+            all_packages = packages + custom_packages
+            package_str = "||".join(all_packages)  # Use || as delimiter instead of comma
 
             # 2) CREATE THE QUOTE
             quote = Quote(

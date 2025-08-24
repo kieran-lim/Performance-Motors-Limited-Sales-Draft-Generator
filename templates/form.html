@@ -153,9 +153,67 @@
             <input type="checkbox" name="packages" value="Number retention" id="number-retention" class="accent-[#39FF14]"/>
             <span class="ml-2">Number retention</span>
           </label>
+          <!-- NEW PACKAGE OPTIONS -->
+          <label class="inline-flex items-center">
+            <input type="checkbox" name="packages" value="Free wall box charger and installation" class="accent-[#39FF14]"/>
+            <span class="ml-2">Free wall box charger & installation</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input type="checkbox" name="packages" value="Opt out of wall box charger - $4,000 discount" class="accent-[#39FF14]"/>
+            <span class="ml-2">Opt out wall box - $4K discount</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input type="checkbox" name="packages" value="Boot mat" class="accent-[#39FF14]"/>
+            <span class="ml-2">Boot mat</span>
+          </label>
+          <label class="inline-flex items-center">
+            <input type="checkbox" name="packages" value="1 year extended warranty" class="accent-[#39FF14]"/>
+            <span class="ml-2">1 year extended warranty</span>
+          </label>
         </div>
       </div>
 
+      <!-- CUSTOM PACKAGES SECTION -->
+      <div class="md:col-span-2 mt-6 mb-8">
+        <div class="bg-gray-800 bg-opacity-60 backdrop-blur-sm rounded-xl p-6 border border-gray-600">
+          <div class="flex items-center justify-between mb-4">
+            <div class="flex items-center space-x-2">
+              <label class="text-lg font-semibold text-white">Custom Packages</label>
+            </div>
+            <div class="text-sm text-gray-400">Add your own packages</div>
+          </div>
+          
+          <div id="custom-packages-container" class="space-y-4">
+            <div class="custom-package-item group relative">
+              <div class="flex items-center p-4 bg-gray-700 bg-opacity-50 rounded-lg border border-gray-600 hover:border-[#39FF14] transition-all duration-300 hover:shadow-lg hover:shadow-[#39FF14]/20">
+                <div class="flex-1 min-w-0 pr-3">
+                  <input type="text" name="custom_packages[]" placeholder="Enter custom package name" 
+                    class="w-full px-3 py-2 bg-transparent border-none focus:outline-none focus:ring-0 placeholder-gray-400 text-white text-sm custom-package-input" />
+                </div>
+                <div class="flex-shrink-0">
+                  <button type="button" class="remove-custom-package opacity-0 group-hover:opacity-100 px-3 py-2 bg-red-600 text-white rounded-md text-xs hover:bg-red-500 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center space-x-1.5 shadow-sm hover:shadow-md">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                    </svg>
+                    <span>Remove</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <button type="button" id="add-custom-package" class="mt-4 px-3 py-1.5 bg-gray-600 text-gray-300 text-sm font-medium rounded border border-gray-500 hover:bg-gray-500 hover:border-gray-400 hover:text-white transition-all duration-300 flex items-center justify-center space-x-1.5 group shadow-sm hover:shadow-md active:scale-95">
+            <svg class="w-4 h-4 group-hover:rotate-90 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
+            </svg>
+            <span>Add Package</span>
+          </button>
+          
+          <div class="mt-6 text-xs text-gray-400 text-center">
+            💡 Tip: You can add multiple custom packages to include any additional features or services
+          </div>
+        </div>
+      </div>
 
 
       <!-- TRADE-IN & FINANCE -->

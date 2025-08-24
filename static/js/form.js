@@ -275,3 +275,159 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 });
+
+// CUSTOM PACKAGES FUNCTIONALITY
+document.addEventListener('DOMContentLoaded', function() {
+    const addCustomPackageBtn = document.getElementById('add-custom-package');
+    const customPackagesContainer = document.getElementById('custom-packages-container');
+    
+    if (addCustomPackageBtn && customPackagesContainer) {
+        // Add new custom package field with animation
+        addCustomPackageBtn.addEventListener('click', function() {
+            const newPackageItem = document.createElement('div');
+            newPackageItem.className = 'custom-package-item group relative';
+            newPackageItem.style.opacity = '0';
+            newPackageItem.style.transform = 'translateY(-20px)';
+            
+            newPackageItem.innerHTML = `
+                <div class="flex items-center p-4 bg-gray-700 bg-opacity-50 rounded-lg border border-gray-600 hover:border-[#39FF14] transition-all duration-300 hover:shadow-lg hover:shadow-[#39FF14]/20">
+                    <div class="flex-1 min-w-0 pr-3">
+                        <input type="text" name="custom_packages[]" placeholder="Enter custom package name" 
+                            class="w-full px-3 py-2 bg-transparent border-none focus:outline-none focus:ring-0 placeholder-gray-400 text-white text-sm custom-package-input" />
+                    </div>
+                    <div class="flex-shrink-0">
+                        <button type="button" class="remove-custom-package opacity-0 group-hover:opacity-100 px-3 py-2 bg-red-600 text-white rounded-md text-xs hover:bg-red-500 hover:scale-105 active:scale-95 transition-all duration-200 flex items-center space-x-1.5 shadow-sm hover:shadow-md">
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
+                            </svg>
+                            <span>Remove</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+            
+            customPackagesContainer.appendChild(newPackageItem);
+            
+            // Animate the new item in
+            setTimeout(() => {
+                newPackageItem.style.transition = 'all 0.3s ease-out';
+                newPackageItem.style.opacity = '1';
+                newPackageItem.style.transform = 'translateY(0)';
+            }, 10);
+            
+            // Add click sound to new input
+            const newInput = newPackageItem.querySelector('input');
+            const clickSound = new Audio("./../static/audio/button-click.wav");
+            
+            newInput.addEventListener('click', () => {
+                clickSound.play().catch(e => console.log('Audio play failed:', e));
+            });
+            
+            // Add focus effects and remove button visibility
+            newInput.addEventListener('focus', function() {
+                this.closest('.custom-package-item').querySelector('div').classList.add('ring-2', 'ring-[#39FF14]', 'ring-opacity-50');
+                // Always show remove button for additional packages
+                const removeBtn = this.closest('.custom-package-item').querySelector('.remove-custom-package');
+                if (removeBtn) {
+                    removeBtn.style.opacity = '1';
+                    removeBtn.style.pointerEvents = 'auto';
+                }
+            });
+            
+            newInput.addEventListener('blur', function() {
+                this.closest('.custom-package-item').querySelector('div').classList.remove('ring-2', 'ring-[#39FF14]', 'ring-opacity-50');
+            });
+            
+            // Show remove button when typing
+            newInput.addEventListener('input', function() {
+                const removeBtn = this.closest('.custom-package-item').querySelector('.remove-custom-package');
+                if (removeBtn) {
+                    removeBtn.style.opacity = '1';
+                    removeBtn.style.pointerEvents = 'auto';
+                }
+            });
+            
+            // Add remove functionality to new remove button with animation
+            const removeBtn = newPackageItem.querySelector('.remove-custom-package');
+            removeBtn.addEventListener('click', function() {
+                const item = this.closest('.custom-package-item');
+                item.style.transition = 'all 0.3s ease-in';
+                item.style.opacity = '0';
+                item.style.transform = 'translateX(100px)';
+                setTimeout(() => {
+                    item.remove();
+                }, 300);
+            });
+            
+            // Focus the new input
+            setTimeout(() => {
+                newInput.focus();
+            }, 350);
+        });
+        
+        // Add remove functionality to initial remove button (if it exists)
+        const initialRemoveBtn = customPackagesContainer.querySelector('.remove-custom-package');
+        if (initialRemoveBtn) {
+            initialRemoveBtn.addEventListener('click', function() {
+                const packageItem = this.closest('.custom-package-item');
+                if (packageItem) {
+                    packageItem.style.transition = 'all 0.3s ease-in';
+                    packageItem.style.opacity = '0';
+                    packageItem.style.transform = 'translateX(100px)';
+                    setTimeout(() => {
+                        packageItem.remove();
+                    }, 300);
+                }
+            });
+        }
+        
+        // Show/hide initial remove button based on input content
+        const initialInput = customPackagesContainer.querySelector('input[name="custom_packages[]"]');
+        if (initialInput && initialRemoveBtn) {
+            // Function to check and show/hide remove button
+            function updateRemoveButtonVisibility() {
+                if (initialInput.value.trim()) {
+                    initialRemoveBtn.style.opacity = '1';
+                    initialRemoveBtn.style.pointerEvents = 'auto';
+                } else {
+                    initialRemoveBtn.style.opacity = '0';
+                    initialRemoveBtn.style.pointerEvents = 'none';
+                }
+            }
+            
+            // Check on page load
+            updateRemoveButtonVisibility();
+            
+            // Show remove button when input has content
+            initialInput.addEventListener('input', updateRemoveButtonVisibility);
+            
+            // Show remove button on focus if there's content
+            initialInput.addEventListener('focus', function() {
+                this.closest('.custom-package-item').querySelector('div').classList.add('ring-2', 'ring-[#39FF14]', 'ring-opacity-50');
+                updateRemoveButtonVisibility();
+            });
+            
+            initialInput.addEventListener('blur', function() {
+                this.closest('.custom-package-item').querySelector('div').classList.remove('ring-2', 'ring-[#39FF14]', 'ring-opacity-50');
+                updateRemoveButtonVisibility();
+            });
+        }
+        
+        // Add whoosh sound effect to add button (only on actual click)
+        addCustomPackageBtn.addEventListener('click', function() {
+            const whooshSound = new Audio("./../static/audio/812682__audiopapkin__sound-design-elements-whoosh-sfx-045.wav");
+            whooshSound.volume = 0.4;
+            whooshSound.play().catch(e => console.log('Audio play failed:', e));
+        });
+        
+        // Add fantasy sound effect to create draft button
+        const createDraftBtn = document.querySelector('button[type="submit"]');
+        if (createDraftBtn) {
+            createDraftBtn.addEventListener('click', function() {
+                const fantasySound = new Audio("./../static/audio/376746__zenithinfinitivestudios__fantasy_ui_button_2.wav");
+                fantasySound.volume = 0.5;
+                fantasySound.play().catch(e => console.log('Audio play failed:', e));
+            });
+        }
+    }
+});
