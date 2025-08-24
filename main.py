@@ -19,7 +19,11 @@ app.config.from_object(Config)
 # INITIALIZE DATABASE
 db.init_app(app)
 with app.app_context():
-    db.create_all()
+    try:
+        db.create_all()
+    except Exception as e:
+        print(f"Database initialization failed: {e}")
+        # Continue without database tables - they'll be created on first use
 
 
 # INITIALIZING FLASK-LOGIN
