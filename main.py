@@ -18,9 +18,13 @@ app.config.from_object(Config)
 
 # INITIALIZE DATABASE
 db.init_app(app)
-with app.app_context():
+
+def init_database():
+    """Initialize database tables safely"""
     try:
-        db.create_all()
+        with app.app_context():
+            db.create_all()
+            print("Database initialized successfully")
     except Exception as e:
         print(f"Database initialization failed: {e}")
         # Continue without database tables - they'll be created on first use
@@ -350,5 +354,6 @@ def pdf(quote_id):
 
 
 if __name__ == "__main__":
+    init_database()
     app.run(debug=True)
 
