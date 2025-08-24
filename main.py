@@ -1,3 +1,5 @@
+from dotenv import load_dotenv
+load_dotenv()
 from flask import Flask, request, send_file, render_template, redirect, url_for, flash, session, abort, make_response
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from config import Config
